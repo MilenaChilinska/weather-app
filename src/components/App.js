@@ -19,7 +19,7 @@ function App() {
     e.preventDefault();
     console.log("Potwierdzam");
     // const API = `http://api.weatherstack.com/current?access_key=283022ff78c8a4dd1f809ab880c65241&query=${city}`;
-    const API = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=742adc56bc4ca2c32375e0cea556ad3c&units=metric`;
+    const API = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=742adc56bc4ca2c32375e0cea556ad3c&units=metric`;
     fetch(API)
       .then((response) => {
         console.log(response);

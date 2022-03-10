@@ -18,7 +18,8 @@ function App() {
   const handleCitySubmit = (e) => {
     e.preventDefault();
     console.log("Potwierdzam");
-    const API = `http://api.weatherstack.com/current?access_key=283022ff78c8a4dd1f809ab880c65241&query=${city}`;
+    // const API = `http://api.weatherstack.com/current?access_key=283022ff78c8a4dd1f809ab880c65241&query=${city}`;
+    const API = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=742adc56bc4ca2c32375e0cea556ad3c&units=metric`;
     fetch(API)
       .then((response) => {
         console.log(response);
@@ -33,8 +34,8 @@ function App() {
           err: false,
           date: new Date().toLocaleDateString(),
           city,
-          temp: data.current.temperature,
-          humidity: data.current.humidity,
+          temp: Math.floor(data.main.temp),
+          humidity: data.main.humidity,
         });
       })
       .catch((error) => {
@@ -44,17 +45,12 @@ function App() {
         })
       });
   };
-  if (window.location.protocol.indexOf('https') === 0){
-    var el = document.createElement('meta')
-    el.setAttribute('http-equiv', 'Content-Security-Policy')
-    el.setAttribute('content', 'upgrade-insecure-requests')
-    document.head.append(el)
-  }
+  
   return (
-    <div className="wrapper"> conatiner
-      <div className="top"> row 
-        <h1>Weather App</h1> col-3
-        <div className="main-info"> col-9
+    <div className="wrapper"> 
+      <div className="top"> 
+        <h1>Weather App</h1> 
+        <div className="main-info"> 
           <div>
           <form onSubmit={handleCitySubmit}>
           <input value={city} onChange={handleInput} type="text" placeholder='Type city...' />

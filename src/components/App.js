@@ -18,7 +18,7 @@ function App() {
   const handleCitySubmit = (e) => {
     e.preventDefault();
     console.log("Potwierdzam");
-    const API = `api.weatherstack.com/current?access_key=283022ff78c8a4dd1f809ab880c65241&query=${city}`;
+    const API = `http://api.weatherstack.com/current?access_key=283022ff78c8a4dd1f809ab880c65241&query=${city}`;
     fetch(API)
       .then((response) => {
         console.log(response);
@@ -44,7 +44,12 @@ function App() {
         })
       });
   };
-
+  if (window.location.protocol.indexOf('https') === 0){
+    var el = document.createElement('meta')
+    el.setAttribute('http-equiv', 'Content-Security-Policy')
+    el.setAttribute('content', 'upgrade-insecure-requests')
+    document.head.append(el)
+  }
   return (
     <div className="wrapper"> conatiner
       <div className="top"> row 

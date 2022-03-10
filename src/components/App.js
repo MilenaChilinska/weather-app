@@ -18,7 +18,7 @@ function App() {
   const handleCitySubmit = (e) => {
     e.preventDefault();
     console.log("Potwierdzam");
-    const API = `https://api.weatherstack.com/current?access_key=283022ff78c8a4dd1f809ab880c65241&query=${city}`;
+    const API = `http://api.weatherstack.com/current?access_key=283022ff78c8a4dd1f809ab880c65241&query=${city}`;
     fetch(API)
       .then((response) => {
         console.log(response);
